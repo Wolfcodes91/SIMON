@@ -15,6 +15,11 @@ body {
     grid-template-rows: repeat(2, 30vmin);
     gap: 1vmin;  
 }
+#board > div:hover {
+    transform: scale(1.05);
+    transition: transform 100ms ease;
+    border-top-color: silver;
+  }
 .topleft {
     background-color: teal;
     border-radius: 100% 0 0 0;
@@ -35,6 +40,18 @@ body {
     border-radius: 0 0 100% 0;
     border: solid 1vmin grey;
 }
+.topleft.light {
+    background-color: rgb(60, 223, 174);
+}
+.topright.light {
+    background-color: rgb(216, 71, 216);
+}
+.bottomleft.light {
+    background-color: rgb(252, 132, 88);
+}
+.bottomright.light {
+    background-color: rgb(110, 145, 252);
+}
 #controls {
     height: 20vmin;
     width: 20vmin;
@@ -46,8 +63,8 @@ body {
     color: black;
 }
 input {
-    height: 1vmin;
-    margin-top: -0.2;
+    height: 2vmin;
+    margin-top: -0.5;
 }
 #start {
     height: 3vmin;
@@ -63,13 +80,13 @@ input {
 }
 #on {
     height: 1vmin;
-    margin: 0.1vmin;
+    margin: auto;
     font-size: 1vmin;
 }
 #onbutton {
     height: 1vmin;
-    margin: 0;
-    font-size: 1vmin;
+    margin: auto;
+    font-size: 1vmin; 
 }
 h3 {
     font-size: 2vmin;
@@ -95,21 +112,66 @@ h5 {
     margin-left: 8.5vmin;
     font-weight: bold;
 }
-#board > div:hover {
-    transform: scale(1.05);
-    transition: transform 100ms ease;
-    border-top-color: silver;
-  }
-.topleft.light {
-    background-color: rgb(60, 223, 174);
-}
-.topright.light {
-    background-color: rgb(216, 71, 216);
-}
-.bottomleft.light {
-    background-color: rgb(252, 132, 88);
-}
-.bottomright.light {
-    background-color: rgb(110, 145, 252);
-}
+
+@media only screen and (max-width: 620px), (max-height: 620px) {
+    #controls {
+        height: 22vmin;
+        width: 70vmin;
+        background-color: white;
+        border-radius: 40%;
+        border: solid 0.3vmin silver;
+        color: black; 
+        position: relative;
+    }
+    input {
+        height: 3vmin;
+        margin-left: 40vmin;
+        margin-top: 5vmin;
+    }
+    #start {
+        height: 10vmin;
+        font-size: 5vmin;
+        background-color: gold;
+        margin-top: 0;
+        text-align: center;
+        font-family: 'Shizuru', cursive;
+        font-weight: bold;
+    }
+    #score {
+        height: 1vmin;
+        font-size: 3vmin;
+        margin-right: 48vmin;
+        margin-top: -11vmin;
+    }
+    #scoreboard {
+        font-family: 'Courier New', Courier, monospace;
+        background-color: rgb(83, 1, 1);
+        color: rgb(255, 0, 0);
+        height: 6vmin;
+        width: 6vmin;
+        font-size: 2.6vmin;
+        font-weight: bold;
+        margin-top: 3vmin;
+    }
+    #on {
+        height: 1vmin;
+        font-size: 4vmin;
+        margin-left: 40vmin;
+        margin-top: -14vmin
+    }
+    h3 {
+        font-size: 5vmin;
+        margin: 2.5vmin 2vmin 1vmin 2vmin;
+        font-weight: bold;
+    }
+    h5 {
+        font-size: 5vmin;
+        margin-top: -20vmin;
+    }
+    #onbutton {
+        height: 1vmin;
+        font-size: 1vmin; 
+        margin-left: 20vmin;
+        margin-top: 10vmin;
+    }
 

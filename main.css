@@ -1,3 +1,5 @@
+
+
 body {
     height: 100vh;
     margin: 0;
@@ -7,6 +9,7 @@ body {
     align-items: center;
     background-color: black;
     color: white;
+    font-family: 'Shizuru', cursive;
 }
 
 #board {
@@ -43,21 +46,19 @@ body {
     text-align: center;
     position: absolute;
     border: solid 0.5vmin silver;
-    margin-top: 20vmin;
-    margin-left: 20vmin;
     color: black;
 }
 input {
     height: 1vmin;
-    margin-top: 0;
+    margin-top: -0.2;
 }
 #start {
-    /* height: 3vmin;
-    width: 6vmin; */
+    height: 3vmin;
     font-size: 1.5vmin;
     background-color: gold;
     margin: 0.5vmin;
     text-align: center;
+    font-family: 'Shizuru', cursive;
 }
 #on {
     height: 1vmin;
@@ -66,7 +67,7 @@ input {
 }
 h3 {
     font-size: 2vmin;
-    margin: 2vmin;
+    margin: 2.5vmin 2vmin 1vmin 2vmin;
 }
 h5 {
     font-size: 1vmin;
@@ -82,5 +83,10 @@ h5 {
     height: 1vmin;
     width: 1vmin;
     font-size: 1vmin;
-    margin-left: 9.5vmin;
+    margin-left: 9.55vmin;
 }
+#board > div:hover {
+    transform: scale(1.05);
+    transition: transform 100ms ease;
+    border-top-color: darkgrey;
+  }

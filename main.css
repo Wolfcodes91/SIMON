@@ -1,5 +1,3 @@
-
-
 body {
     height: 100vh;
     margin: 0;
@@ -11,29 +9,28 @@ body {
     color: white;
     font-family: 'Shizuru', cursive;
 }
-
 #board {
     display: grid; 
     grid-template-columns: repeat(2, 30vmin);
     grid-template-rows: repeat(2, 30vmin);
     gap: 1vmin;  
 }
-#topleft {
+.topleft {
     background-color: teal;
     border-radius: 100% 0 0 0;
     border: solid 1vmin grey;
 }
-#topright {
+.topright {
     background-color: purple;
     border-radius: 0 100% 0 0;
     border: solid 1vmin grey;
 }
-#bottomleft {
+.bottomleft { 
     background-color: orangered;
     border-radius: 0 0 0 100%;
     border: solid 1vmin grey;
 }   
-#bottomright {
+.bottomright {
     background-color: royalblue;
     border-radius: 0 0 100% 0;
     border: solid 1vmin grey;
@@ -45,7 +42,7 @@ body {
     border-radius: 100%;
     text-align: center;
     position: absolute;
-    border: solid 0.5vmin silver;
+    border: solid 0.3vmin silver;
     color: black;
 }
 input {
@@ -59,15 +56,25 @@ input {
     margin: 0.5vmin;
     text-align: center;
     font-family: 'Shizuru', cursive;
+    font-weight: bold;
+}
+#start:active {
+    background-color: red;
 }
 #on {
     height: 1vmin;
     margin: 0.1vmin;
     font-size: 1vmin;
 }
+#onbutton {
+    height: 1vmin;
+    margin: 0;
+    font-size: 1vmin;
+}
 h3 {
     font-size: 2vmin;
     margin: 2.5vmin 2vmin 1vmin 2vmin;
+    font-weight: bold;
 }
 h5 {
     font-size: 1vmin;
@@ -79,14 +86,30 @@ h5 {
     font-size: 1vmin;
 }
 #scoreboard {
-    background-color: darkred;
-    height: 2vmin;
-    width: 2vmin;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: rgb(83, 1, 1);
+    color: rgb(255, 0, 0);
+    height: 3vmin;
+    width: 3vmin;
     font-size: 1vmin;
-    margin-left: 9vmin;
+    margin-left: 8.5vmin;
+    font-weight: bold;
 }
 #board > div:hover {
     transform: scale(1.05);
     transition: transform 100ms ease;
-    border-top-color: darkgrey;
+    border-top-color: silver;
   }
+.topleft.light {
+    background-color: rgb(60, 223, 174);
+}
+.topright.light {
+    background-color: rgb(216, 71, 216);
+}
+.bottomleft.light {
+    background-color: rgb(252, 132, 88);
+}
+.bottomright.light {
+    background-color: rgb(110, 145, 252);
+}
+

@@ -25,18 +25,33 @@
 
 
 4) Upon loading the app should:
-	Initialize the state variables
+	Initialize: the state variables
     game begins off. players turns the game on and scoreboard lights up with empty or 0
     upon pressing start the computer patterns begins and then waits for the players move
 
+    render:
+    
+    The order variable will be a random array up to idk, 30? that determines the game play. 
+    Each round the array will have push of the next number from the randomized array series 
+    corresponding with the index of the round we are on.
+    During the computers turn the player should be unable to click anything.
+    
 
 5) Handle a player clicking a quadrant
 
 
     game determines correct for players move and either ends game or moves on to the next round.
 
+    During the players turn, the player will click each button filling in the player order array. 
+    If the player order array matches the computer order array, then the round will be deemed "correct" 
+    and the game will move to the next round.
+
 
 6) Handle game play 
 
     game continues/speeds up until player loses. 
+    after each round the intervalId will shorten between each of the computers moves
+    causing the sequence to be played faster and thus harder to remember. 
     Like life - there can be no winner in SIMON - the best you can hope for is survival. 
+
+    when the player loses, the game will light all four quadrants. 

@@ -19,7 +19,7 @@ body {
     gap: 1vmin;  
 }
 #topleft {
-    background-color: aquamarine;
+    background-color: teal;
     border-radius: 100% 0 0 0;
     border: solid 1vmin grey;
 }
@@ -29,7 +29,7 @@ body {
     border: solid 1vmin grey;
 }
 #bottomleft {
-    background-color: red;
+    background-color: orangered;
     border-radius: 0 0 0 100%;
     border: solid 1vmin grey;
 }   
@@ -80,10 +80,10 @@ h5 {
 }
 #scoreboard {
     background-color: darkred;
-    height: 1vmin;
-    width: 1vmin;
+    height: 2vmin;
+    width: 2vmin;
     font-size: 1vmin;
-    margin-left: 9.55vmin;
+    margin-left: 9vmin;
 }
 #board > div:hover {
     transform: scale(1.05);

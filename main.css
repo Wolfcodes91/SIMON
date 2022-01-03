@@ -113,7 +113,7 @@ h5 {
     font-weight: bold;
 }
 
-@media only screen and (max-width: 620px), (max-height: 620px) {
+@media only screen and (max-width: 600px), (max-height: 600px) {
     #controls {
         height: 22vmin;
         width: 70vmin;

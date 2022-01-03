@@ -3,10 +3,10 @@ const buttons = ["topLeft", "topRight", "bottomLeft", "bottomRight"];
 let turn = ["computerTurn", "playerTurn"];
 
 /*----- app's state (variables) -----*/
-let score = 0
+let score = 1
 let playerOrder = [];
 let computerOrder = [];
-let correct = (playerOrder === computerOrder);
+let correct = false;
 let intervalId;
 let on = false;
 let start;
@@ -45,7 +45,8 @@ onButton.addEventListener('click', (event) => {
 
 start.addEventListener('click',(event) => {
     if(on === true) {
-    computerPlay();
+        score = 1;
+        computerPlay();
     } 
 })
 
@@ -85,13 +86,12 @@ function computerPlay() {
     on = false;
     playerOrder = []
     computerOrder = []
-    score = playerOrder+1;
     scoreboard.innerText = score;
     normal();
-    for (i = 0; i < 20; i++) {
-        computerOrder.push(Math.floor(Math.random() *4 ) + 1);
+    for (i = 0; i < 4; i++) {
+        computerOrder.push(Math.floor(Math.random() * 4))
     }
-    turn = turn[0];
+    // turn = turn[0];
     // buttons[i].classList.add('light'); 
     
     // check(); 
@@ -100,7 +100,8 @@ function playerPlay() {
     on = true;  
 }
 function check() {
-    if(correct === true) {
+    if(playerOrder === computerOrder) {
+        score += 1;
         computerPlay();
     } else {
         lose();

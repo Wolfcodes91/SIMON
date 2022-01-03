@@ -1,25 +1,17 @@
 /*----- constants -----*/
-const buttons = ["topLeft", "topRight", "bottomLeft", "bottomRight"];
-let turn = ["computerTurn", "playerTurn"];
 
 /*----- app's state (variables) -----*/
-let score = 1
-let playerOrder = [];
-let computerOrder = [];
-let correct = false;
-let intervalId;
-let on = false;
-let start;
-let scoreboard;
+let playerOrder; //array to hold players guesses
+let computerOrder;//array to hold computers moves
+let correct; // false when player guesses incorrectly
+let on; // true when game is powered on 
+let computerTurn; // true if computer is playing sequence
 
 /*----- cached element references -----*/
+const buttons = Array.from(document.querySelectorAll('#board > div')); 
 scoreboard = document.getElementById("scoreboard");
 onButton = document.querySelector(".onbutton");
 start = document.getElementById("start");
-buttons[0] = document.querySelector(".topleft");
-buttons[1] = document.querySelector(".topright");
-buttons[2] = document.querySelector(".bottomleft");
-buttons[3] = document.querySelector(".bottomright");
 
 const lightUp = function() {
     buttons[0].classList.add('light')
@@ -44,24 +36,27 @@ onButton.addEventListener('click', (event) => {
 });
 
 start.addEventListener('click',(event) => {
-    if(on === true) {
-        score = 1;
-        computerPlay();
-    } 
+    if (!on) return;
+    computerOrder = [];
+    playerOrder = [];
+    normal();
+    computerPlay();
 })
 
-buttons[0].addEventListener('click',(event) => {
-   if (on ===true) topLeftClick();
-})
-buttons[1].addEventListener('click',(event) => {
-    if (on ===true) topRightClick();
-})
-buttons[2].addEventListener('click',(event) => {
-    if (on ===true) bottomLeftClick();
-})
-buttons[3].addEventListener('click',(event) => {
-    if (on ===true) bottomRightClick();
-})
+document.getElementById('board').addEventListener('click', (event) => {
+    if (!on || computerTurn) return;
+    const btn = event.target; 
+    const btnIdx = buttons.indexOf(btn);
+    if (btnIdx === -1) return; 
+    // play sound 
+    buttons[btnIdx].classList.add('light')
+    playerOrder.push(btnIdx);
+    if (checkComplete()) { 
+        computerPlay();
+    } else if (!checkCurrent()) {
+        
+    }
+ });
 
 /*----- functions -----*/
 // initialize all state, then call render()
@@ -74,55 +69,39 @@ function init() {
 }
 function gameOn() {
     on = true;
+    onButton.checked = true;
     scoreboard.innerText = "ʘ‿ʘ";
     normal(); 
 }
 function lose() {
-    on = true;
+    // on = false;
     lightUp();
     scoreboard.innerText = "FAIL LOL"
 }
 function computerPlay() {
-    on = false;
-    playerOrder = []
-    computerOrder = []
-    scoreboard.innerText = score;
-    normal();
-    for (i = 0; i < 4; i++) {
-        computerOrder.push(Math.floor(Math.random() * 4))
-    }
-    // turn = turn[0];
-    // buttons[i].classList.add('light'); 
-    
-    // check(); 
+    computerTurn = true; 
+    playerOrder = [];
+    computerOrder.push(Math.floor(Math.random() * 4))
+    scoreboard.innerText = computerOrder.length;
+   
+    renderComputerOrder()
+
 }
 function playerPlay() {
+    playerOrder = [];
     on = true;  
+    computerTurn = false;
 }
-function check() {
-    if(playerOrder === computerOrder) {
-        score += 1;
-        computerPlay();
-    } else {
-        lose();
-    }
-}
-function topLeftClick() {
-    buttons[0].classList.add('light')
-    playerOrder.push(0)
-}
-function topRightClick() {
-    buttons[1].classList.add('light')
-    playerOrder.push(1)
-}
-function bottomLeftClick() {
-    buttons[2].classList.add('light')
-    playerOrder.push(2)
-}
-function bottomRightClick() {
-    buttons[3].classList.add('light')
-    playerOrder.push(3)
+function checkComplete() {
+    return JSON.stringify(playerOrder) === JSON.stringify(computerOrder);
+}  
+
+function checkCurrent() {
+    
 }
 
+function renderComputerOrder() {
+
+}
 
 //update all impacted state, then call render()

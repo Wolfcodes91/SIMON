@@ -1,4 +1,7 @@
 /*----- constants -----*/
+const LIT_TIME = 1000;
+const GAP_TIME = 400;
+
 
 /*----- app's state (variables) -----*/
 let playerOrder; //array to hold players guesses
@@ -61,6 +64,30 @@ document.getElementById('board').addEventListener('click', (event) => {
 
 /*----- functions -----*/
 // initialize all state, then call render()
+
+function renderSequence(cb) {
+    computerTurn = true;
+    let idx = 0;
+    const timerId = setInterval(function() {
+      const btn = buttons[idx];
+      for (i = 0; i < computerOrder.length; i++) {
+        buttons[computerOrder[i]].classList.add('light')
+        }
+      setTimeout(function() {
+        for (i = 0; i < computerOrder.length; i++) {
+            buttons[computerOrder[i]].classList.remove('light')
+            }
+      }, LIT_TIME);
+      idx++;
+      if (idx === computerOrder.length) {
+        clearInterval(timerId);
+        computerTurn = false;
+        setTimeout(cb, LIT_TIME);
+      }
+    }, LIT_TIME + GAP_TIME);
+  }
+
+
 function init() {
     scoreboard.innerText = "";
     normal();
@@ -75,7 +102,6 @@ function gameOn() {
     normal(); 
 }
 function lose() {
-    // on = false;
     lightUp();
     scoreboard.innerText = "FAIL LOL"
 }
@@ -84,12 +110,11 @@ function computerPlay() {
     playerOrder = [];
     computerOrder.push(Math.floor(Math.random() * 4))
     scoreboard.innerText = computerOrder.length;
-    for (i = 0; i < computerOrder.length; i++) {
-    buttons[computerOrder[i]].classList.add('light')
-    }
+    
+    renderSequence(); 
     // renderComputerOrder()
-
 }
+
 function playerPlay() {
     playerOrder = [];
     on = true;  
@@ -101,7 +126,6 @@ function checkComplete() {
 }  
 
 function checkCurrent() {
-
     for (i = 0; i < playerOrder.length; i++) {
         playerOrder[i] === computerOrder[i] ? true : lose();
     }
@@ -110,5 +134,8 @@ function checkCurrent() {
 function renderComputerOrder() {
 
 }
+
+
+  
 
 //update all impacted state, then call render()

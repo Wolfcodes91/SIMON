@@ -53,8 +53,13 @@ body {
     background-color: rgb(110, 145, 252);
 }
 #controls {
-    height: 20vmin;
-    width: 20vmin;
+    height: 25vmin;
+    width: 25vmin;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
     background-color: grey;
     border-radius: 100%;
     text-align: center;
@@ -63,15 +68,17 @@ body {
     color: black;
 }
 input {
-    height: 2vmin;
-    margin-top: -0.5;
+    display: flex;
+    height: 6%;
+    width: 6%;
 }
 #start {
+    display: flex;
     height: 3vmin;
     font-size: 1.5vmin;
     background-color: gold;
-    margin: 0.5vmin;
     text-align: center;
+    align-items: center;
     font-family: 'Shizuru', cursive;
     font-weight: bold;
 }
@@ -79,99 +86,104 @@ input {
     background-color: red;
 }
 #on {
-    height: 1vmin;
-    margin: auto;
+    display: flex;
     font-size: 1vmin;
+    margin-bottom:  -0.5vmin;
 }
 #onbutton {
-    height: 1vmin;
-    margin: auto;
-    font-size: 1vmin; 
+    display: flex;  
 }
 h3 {
-    font-size: 2vmin;
-    margin: 2.5vmin 2vmin 1vmin 2vmin;
+    display: flex;
+    margin-top: 1vmin;
+    font-size: 3vmin;
     font-weight: bold;
 }
-h5 {
-    font-size: 1vmin;
-    margin: 0.3vmin;
-}
 #score {
-    height: 1vmin;
-    margin: 0.3vmin;
+    display: flex;
+    height: 0.8vmin;
     font-size: 1vmin;
 }
+#scoreboardcontainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
 #scoreboard {
     font-family: 'Courier New', Courier, monospace;
     background-color: rgb(83, 1, 1);
     color: rgb(255, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -1vmin;
+    margin-bottom: 2vmin;
     height: 3vmin;
     width: 3vmin;
     font-size: 1vmin;
-    margin-left: 8.5vmin;
     font-weight: bold;
 }
 
-@media only screen and (max-width: 600px), (max-height: 600px) {
+
+
+
+@media only screen and (max-width: 500px), (max-height: 500px) {
     #controls {
-        height: 22vmin;
-        width: 70vmin;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        justify-content: space-around;
+        align-content: center;
+        width: 70%;
+        height: 25%;
         background-color: white;
-        border-radius: 40%;
-        border: solid 0.3vmin silver;
+        border-radius: 10%;
+        border: solid 1vmin silver;
         color: black; 
         position: relative;
     }
     input {
-        height: 3vmin;
-        margin-left: 40vmin;
-        margin-top: 5vmin;
+        display: flex;
+        height: 20%;
+        width: 20%;
     }
     #start {
+        display: flex;
         height: 10vmin;
         font-size: 5vmin;
         background-color: gold;
-        margin-top: 0;
-        text-align: center;
         font-family: 'Shizuru', cursive;
         font-weight: bold;
     }
-    #score {
-        height: 1vmin;
-        font-size: 3vmin;
-        margin-right: 48vmin;
-        margin-top: -11vmin;
+    #start:active {
+        background-color: red;
     }
+    #on {
+        display: flex;
+        color: white;
+    }
+    h3 {
+        display: flex;
+        font-size: 5vmin;
+        font-weight: bold;
+    }
+    #score {
+        display: flex;
+        color: white;
+    }
+    #scoreboardcontainer {
+        width: 100%;
+        display: flex;
+    }
+    
     #scoreboard {
         font-family: 'Courier New', Courier, monospace;
         background-color: rgb(83, 1, 1);
         color: rgb(255, 0, 0);
-        height: 6vmin;
-        width: 6vmin;
-        font-size: 2.6vmin;
-        font-weight: bold;
-        margin-top: 3vmin;
-    }
-    #on {
-        height: 1vmin;
+        height: 10vmin;
+        width: 10vmin;
         font-size: 4vmin;
-        margin-left: 40vmin;
-        margin-top: -14vmin
-    }
-    h3 {
-        font-size: 5vmin;
-        margin: 2.5vmin 2vmin 1vmin 2vmin;
         font-weight: bold;
-    }
-    h5 {
-        font-size: 5vmin;
-        margin-top: -20vmin;
-    }
-    #onbutton {
-        height: 1vmin;
-        font-size: 1vmin; 
-        margin-left: 20vmin;
-        margin-top: 10vmin;
     }
 }

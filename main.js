@@ -54,7 +54,7 @@ document.getElementById('board').addEventListener('click', (event) => {
     if (checkComplete()) { 
         computerPlay();
     } else if (!checkCurrent()) {
-        
+        lose();
     }
  });
 

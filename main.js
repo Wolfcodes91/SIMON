@@ -49,12 +49,13 @@ document.getElementById('board').addEventListener('click', (event) => {
     const btnIdx = buttons.indexOf(btn);
     if (btnIdx === -1) return; 
     // play sound 
-    buttons[btnIdx].classList.add('light')
     playerOrder.push(btnIdx);
+    buttons[btnIdx].classList.add('light')
+    
     if (checkComplete()) { 
         computerPlay();
-    } else if (!checkCurrent()) {
-        lose();
+    } else {
+        checkCurrent();
     }
  });
 
@@ -83,8 +84,10 @@ function computerPlay() {
     playerOrder = [];
     computerOrder.push(Math.floor(Math.random() * 4))
     scoreboard.innerText = computerOrder.length;
-   
-    renderComputerOrder()
+    for (i = 0; i < computerOrder.length; i++) {
+    buttons[computerOrder[i]].classList.add('light')
+    }
+    // renderComputerOrder()
 
 }
 function playerPlay() {
@@ -94,11 +97,15 @@ function playerPlay() {
 }
 function checkComplete() {
     return JSON.stringify(playerOrder) === JSON.stringify(computerOrder);
+    normal()
 }  
 
 function checkCurrent() {
-    
-}
+
+    for (i = 0; i < playerOrder.length; i++) {
+        playerOrder[i] === computerOrder[i] ? true : lose();
+    }
+};
 
 function renderComputerOrder() {
 

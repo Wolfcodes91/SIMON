@@ -5,6 +5,9 @@
     define CSS rule for each button so that they may be easily accessed by DOM manipulation
 
 
+
+
+
 2) Define required variables used to track the state of the game
 
     power: determines whether the game is on or off. 

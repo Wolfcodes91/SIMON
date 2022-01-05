@@ -63,7 +63,7 @@ document.getElementById('board').addEventListener('click', (event) => {
     } else {
         checkCurrent();
     }
- });
+});
 
 /*----- functions -----*/
 // initialize all state, then call render()
@@ -86,7 +86,6 @@ function renderSequence() {
     }, LIT_TIME + GAP_TIME);
 }
 
-
 function init() {
     gameOver = true;
     scoreboard.innerText = "";
@@ -95,12 +94,14 @@ function init() {
     on = false;
     onButton.checked = false;
 }
+
 function gameOn() {
     on = true;
     onButton.checked = true;
     scoreboard.innerText = "ʘ‿ʘ";
-    normal(); 
+    normal();  
 }
+
 function lose() {
     gameOver = true;
     lightUp();
@@ -120,6 +121,7 @@ function playerPlay() {
     on = true;  
     computerTurn = false;
 }
+
 function checkComplete() {
     return JSON.stringify(playerOrder) === JSON.stringify(computerOrder);
     normal()
@@ -130,9 +132,3 @@ function checkCurrent() {
         playerOrder[i] === computerOrder[i] ? true : lose();
     }
 };
-
-
-
-  
-
-//update all impacted state, then call render()

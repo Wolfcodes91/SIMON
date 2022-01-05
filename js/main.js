@@ -6,7 +6,7 @@ const GAP_TIME = 400;
 /*----- app's state (variables) -----*/
 let playerOrder; //array to hold players guesses
 let computerOrder;//array to hold computers moves
-let correct; // false when player guesses incorrectly
+let gameOver; // true when player guesses incorrectly
 let on; // true when game is powered on 
 let computerTurn; // true if computer is playing sequence
 
@@ -39,6 +39,7 @@ onButton.addEventListener('click', (event) => {
 });
 
 start.addEventListener('click',(event) => {
+    gameOver = false;
     if (!on) return;
     computerOrder = [];
     playerOrder = [];
@@ -53,8 +54,10 @@ document.getElementById('board').addEventListener('click', (event) => {
     if (btnIdx === -1) return; 
     // play sound 
     playerOrder.push(btnIdx);
-    buttons[btnIdx].classList.add('light')
-    
+    buttons[btnIdx].classList.add('light');  
+    setTimeout(function() {
+        if (!gameOver) buttons[btnIdx].classList.remove('light');
+    }, 200);
     if (checkComplete()) { 
         computerPlay();
     } else {
@@ -65,30 +68,27 @@ document.getElementById('board').addEventListener('click', (event) => {
 /*----- functions -----*/
 // initialize all state, then call render()
 
-function renderSequence(cb) {
+function renderSequence() {
     computerTurn = true;
     let idx = 0;
     const timerId = setInterval(function() {
-      const btn = buttons[idx];
-      for (i = 0; i < computerOrder.length; i++) {
-        buttons[computerOrder[i]].classList.add('light')
+        const btn = buttons[computerOrder[idx]];
+        btn.classList.add('light')      
+        setTimeout(function() {
+            btn.classList.remove('light')
+        
+        }, LIT_TIME);
+        idx++;
+        if (idx === computerOrder.length) {
+            clearInterval(timerId);
+            computerTurn = false;
         }
-      setTimeout(function() {
-        for (i = 0; i < computerOrder.length; i++) {
-            buttons[computerOrder[i]].classList.remove('light')
-            }
-      }, LIT_TIME);
-      idx++;
-      if (idx === computerOrder.length) {
-        clearInterval(timerId);
-        computerTurn = false;
-        setTimeout(cb, LIT_TIME);
-      }
     }, LIT_TIME + GAP_TIME);
-  }
+}
 
 
 function init() {
+    gameOver = true;
     scoreboard.innerText = "";
     normal();
     turn = 0;
@@ -102,17 +102,17 @@ function gameOn() {
     normal(); 
 }
 function lose() {
+    gameOver = true;
     lightUp();
     scoreboard.innerText = "FAIL LOL"
+    
 }
 function computerPlay() {
     computerTurn = true; 
     playerOrder = [];
     computerOrder.push(Math.floor(Math.random() * 4))
     scoreboard.innerText = computerOrder.length;
-    
     renderSequence(); 
-    // renderComputerOrder()
 }
 
 function playerPlay() {
@@ -131,9 +131,6 @@ function checkCurrent() {
     }
 };
 
-function renderComputerOrder() {
-
-}
 
 
   

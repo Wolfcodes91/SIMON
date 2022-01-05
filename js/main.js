@@ -35,6 +35,7 @@ const audio = [
     new Audio ("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
     new Audio ("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"),
     new Audio ("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"),
+    new Audio ("/Users/davewolfberg/code/SIMON/sound/tetraExcerpt.wav")
 ]
 
 /*----- event listeners -----*/
@@ -43,6 +44,9 @@ onButton.addEventListener('click', (event) => {
         gameOn();
     } else {
         init();
+        audio[4].pause();
+        audio[4].currentTime = 0.0;
+
     }
 });
 
@@ -52,6 +56,7 @@ start.addEventListener('click',(event) => {
     computerOrder = [];
     playerOrder = [];
     normal();
+    audio[4].play();
     computerPlay();
 })
 
@@ -102,6 +107,7 @@ function init() {
     turn = 0;
     on = false;
     onButton.checked = false;
+    
 }
 
 function gameOn() {
@@ -114,8 +120,7 @@ function gameOn() {
 function lose() {
     gameOver = true;
     lightUp();
-    scoreboard.innerText = "FAIL LOL"
-    
+    scoreboard.innerText = "FAIL LOL"    
 }
 function computerPlay() {
     computerTurn = true; 

@@ -57,6 +57,7 @@ start.addEventListener('click',(event) => {
     playerOrder = [];
     normal();
     audio[4].play();
+    audio[4].loop = true;
     computerPlay();
 })
 

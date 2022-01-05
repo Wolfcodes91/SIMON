@@ -35,7 +35,7 @@ const audio = [
     new Audio ("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
     new Audio ("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"),
     new Audio ("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"),
-    new Audio ("/Users/davewolfberg/code/SIMON/sound/tetraExcerpt.wav")
+    new Audio ("sound/tetraExcerpt.wav")
 ]
 
 /*----- event listeners -----*/

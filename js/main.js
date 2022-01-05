@@ -2,7 +2,7 @@
 const BASE_LIT_TIME = 900;
 let LIT_TIME;
 let GAP_TIME = 300;
-const LEVEL_JUMP = 5;
+const LEVEL_JUMP = 3;
 const LEVEL_DEC_TIME = 300;
 
 /*----- app's state (variables) -----*/

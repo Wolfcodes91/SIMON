@@ -28,6 +28,14 @@ const normal = function() {
     buttons[2].classList.remove('light')
     buttons[3].classList.remove('light')
 }
+/*----- cached sounds -----*/
+
+const audio = [
+    new Audio ("https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"), 
+    new Audio ("https://s3.amazonaws.com/freecodecamp/simonSound2.mp3"),
+    new Audio ("https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"),
+    new Audio ("https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"),
+]
 
 /*----- event listeners -----*/
 onButton.addEventListener('click', (event) => {
@@ -52,7 +60,7 @@ document.getElementById('board').addEventListener('click', (event) => {
     const btn = event.target; 
     const btnIdx = buttons.indexOf(btn);
     if (btnIdx === -1) return; 
-    // play sound 
+    audio[btnIdx].play(); 
     playerOrder.push(btnIdx);
     buttons[btnIdx].classList.add('light');  
     setTimeout(function() {
@@ -73,7 +81,8 @@ function renderSequence() {
     let idx = 0;
     const timerId = setInterval(function() {
         const btn = buttons[computerOrder[idx]];
-        btn.classList.add('light')      
+        btn.classList.add('light') 
+        audio[computerOrder[idx]].play();     
         setTimeout(function() {
             btn.classList.remove('light')
         
@@ -114,6 +123,7 @@ function computerPlay() {
     computerOrder.push(Math.floor(Math.random() * 4))
     scoreboard.innerText = computerOrder.length;
     renderSequence(); 
+    
 }
 
 function playerPlay() {

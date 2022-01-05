@@ -1,7 +1,9 @@
 /*----- constants -----*/
-const LIT_TIME = 1000;
-const GAP_TIME = 400;
-
+const BASE_LIT_TIME = 900;
+let LIT_TIME;
+let GAP_TIME = 300;
+const LEVEL_JUMP = 5;
+const LEVEL_DEC_TIME = 300;
 
 /*----- app's state (variables) -----*/
 let playerOrder; //array to hold players guesses
@@ -46,7 +48,7 @@ onButton.addEventListener('click', (event) => {
         init();
         audio[4].pause();
         audio[4].currentTime = 0.0;
-
+        normal();   
     }
 });
 
@@ -58,6 +60,7 @@ start.addEventListener('click',(event) => {
     normal();
     audio[4].play();
     audio[4].loop = true;
+    audio[4].volume = 0.3;
     computerPlay();
 })
 
@@ -82,6 +85,11 @@ document.getElementById('board').addEventListener('click', (event) => {
 /*----- functions -----*/
 // initialize all state, then call render()
 
+function handlePlay() {
+    LIT_TIME = BASE_LIT_TIME - Math.floor(computerOrder.length / LEVEL_JUMP) * LEVEL_DEC_TIME;
+    renderSequence();
+}
+
 function renderSequence() {
     computerTurn = true;
     let idx = 0;
@@ -91,7 +99,6 @@ function renderSequence() {
         audio[computerOrder[idx]].play();     
         setTimeout(function() {
             btn.classList.remove('light')
-        
         }, LIT_TIME);
         idx++;
         if (idx === computerOrder.length) {
@@ -107,8 +114,7 @@ function init() {
     normal();
     turn = 0;
     on = false;
-    onButton.checked = false;
-    
+    onButton.checked = false;    
 }
 
 function gameOn() {
@@ -128,8 +134,7 @@ function computerPlay() {
     playerOrder = [];
     computerOrder.push(Math.floor(Math.random() * 4))
     scoreboard.innerText = computerOrder.length;
-    renderSequence(); 
-    
+    handlePlay();    
 }
 
 function playerPlay() {

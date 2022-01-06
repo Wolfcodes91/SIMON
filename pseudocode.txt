@@ -4,10 +4,6 @@
     display: score
     define CSS rule for each button so that they may be easily accessed by DOM manipulation
 
-
-
-
-
 2) Define required variables used to track the state of the game
 
     power: determines whether the game is on or off. 
@@ -20,12 +16,10 @@
     light: determines whether the board shows lit colors or regular.
     intervalId: the amount of time after each button click that the light state is activated.
 
-
 3) Store elements on the page that will be accessed in code more than once in variables to make code more concise, readable and performant.
 
     normalColors: when the board is in its normal state
     lightColors: when the board is lit up 
-
 
 4) Upon loading the app should:
 	Initialize: the state variables
@@ -39,16 +33,13 @@
     corresponding with the index of the round we are on.
     During the computers turn the player should be unable to click anything.
     
-
 5) Handle a player clicking a quadrant
-
 
     game determines correct for players move and either ends game or moves on to the next round.
 
     During the players turn, the player will click each button filling in the player order array. 
     If the player order array matches the computer order array, then the round will be deemed "correct" 
     and the game will move to the next round.
-
 
 6) Handle game play 
 

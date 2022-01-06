@@ -13,7 +13,7 @@ SIMON is a memory game that requires the player to copy the computers moves in c
  ![Home Screen](https://i.imgur.com/27jbUCQ.png)
  ![Game Play](https://i.imgur.com/u5HotUB.png)
  ![Losing Screen](https://i.imgur.com/AsP5dQT.png)
- ![Media Query](https://i.imgur.com/vQy8hfT.png)
+ ![Media Query](https://i.imgur.com/ejO9097.png)
 
 ### Directions
 

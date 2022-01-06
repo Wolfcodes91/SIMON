@@ -10,7 +10,7 @@
 ### Info
 SIMON is a memory game that requires the player to copy the computers moves in continuously growing succession. It gets faster every 4 rounds, if you can make it to round 16 you're smarter than I am.
 
- ![Home Screen](https://imgur.com/27jbUCQ)
+ ![Home Screen](https://i.imgur.com/27jbUCQ.png)
  ![Game Play](https://imgur.com/u5HotUB)
  ![Losing Screen](https://imgur.com/AsP5dQT)
  ![Media Query](https://imgur.com/vQy8hfT)

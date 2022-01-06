@@ -94,6 +94,10 @@ function renderSequence() {
     computerTurn = true;
     let idx = 0;
     const timerId = setInterval(function() {
+        if (!on) {
+            clearInterval(timerId);
+            return; 
+        }
         const btn = buttons[computerOrder[idx]];
         btn.classList.add('light') 
         audio[computerOrder[idx]].play();     

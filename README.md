@@ -23,10 +23,8 @@ Turn SIMON on using the on check box, then press "start" to begin the gameplay. 
     * html
     * css
     * javascript
-    * english
-    * early 2000s british drum&bass 
 
-icebox items: 
+#### Icebox Items: 
     It would be cool to add extra buttons as the levels progress, I would like to add a high score display, and the album art for the background music. 
 
 

@@ -25,6 +25,7 @@ Turn SIMON on using the on check box, then press "start" to begin the gameplay. 
     * javascript
 
 ### Icebox Items: 
+
     It would be cool to add extra buttons as the levels progress. I would like to add a high score display. Add the album art for the background music. 
 
 
